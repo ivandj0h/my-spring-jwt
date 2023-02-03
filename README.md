@@ -23,3 +23,8 @@ openssl rsa -in keypair.pem -pubout -outform PEM -out public.pem
 ```bash
 openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in keypair.pem -out private.pem
 ```
+
+- Hit the endpoint
+```bash
+http POST :8000/token --auth ivandjoh=password -v
+```

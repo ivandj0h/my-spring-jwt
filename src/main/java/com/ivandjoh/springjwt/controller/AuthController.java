@@ -25,7 +25,7 @@ public class AuthController {
 
         String token = this.tokenService.generateToken(authentication);
 
-        LOGGER.debug("Toke Guarantee: {}", token);
+        LOGGER.debug("Token Guarantee: {}", token);
 
         return token;
     }
