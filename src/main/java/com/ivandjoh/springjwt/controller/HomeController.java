@@ -13,7 +13,7 @@ public class HomeController {
 
     private static final Logger LOGGER = Logger.getLogger(HomeController.class.getName());
 
-    @GetMapping("")
+    @GetMapping("/home")
     public String home(Principal principal) {
 
         LOGGER.info("Hello " + principal.getName());
