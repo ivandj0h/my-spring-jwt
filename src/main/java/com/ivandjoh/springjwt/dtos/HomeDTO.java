@@ -9,17 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonPropertyOrder({"name", "welcome_message", "data"})
+@JsonPropertyOrder({"name", "welcome_message"})
 public class HomeDTO {
 
     @JsonProperty("name")
     private String name;
     @JsonProperty("welcome_message")
-    private String wecomeMessage;
-    @JsonProperty("data")
-    private GeneralResponseDTO data;
+    private String welcomeMessage;
 
-    public HomeDTO(String s) {
-        this.wecomeMessage = s;
-    }
 }

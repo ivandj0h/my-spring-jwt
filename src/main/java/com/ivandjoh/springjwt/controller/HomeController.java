@@ -1,7 +1,8 @@
 package com.ivandjoh.springjwt.controller;
 
-import com.ivandjoh.springjwt.dtos.HomeDTO;
+import com.ivandjoh.springjwt.dtos.GeneralResponseDTO;
 import com.ivandjoh.springjwt.service.HomeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,10 +18,11 @@ public class HomeController {
     private static final Logger LOGGER = Logger.getLogger(HomeController.class.getName());
 
 
+    @Autowired
     private HomeService homeService;
 
     @GetMapping("/home")
-    public ResponseEntity<HomeDTO> home(Principal principal) {
+    public ResponseEntity<GeneralResponseDTO> home(Principal principal) {
 
         LOGGER.info("Hello " + principal.getName());
 
