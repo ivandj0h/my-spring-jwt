@@ -6,5 +6,5 @@ import org.springframework.http.ResponseEntity;
 import java.security.Principal;
 
 public interface HomeService {
-    ResponseEntity<GeneralResponseDTO> getHome(Principal principal);
+    ResponseEntity<?> getHome(Principal principal);
 }

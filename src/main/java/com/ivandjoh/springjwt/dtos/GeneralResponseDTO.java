@@ -17,5 +17,5 @@ public class GeneralResponseDTO {
     @JsonProperty("code")
     private int code;
     @JsonProperty("status_code")
-    private String statusCode;
+    private String codeStatus;
 }

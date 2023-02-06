@@ -22,7 +22,7 @@ public class HomeController {
     private HomeService homeService;
 
     @GetMapping("/home")
-    public ResponseEntity<GeneralResponseDTO> home(Principal principal) {
+    public ResponseEntity<?> home(Principal principal) {
 
         LOGGER.info("Hello " + principal.getName());
 

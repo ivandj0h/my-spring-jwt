@@ -7,20 +7,36 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.security.Principal;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.TreeMap;
 
 @Service
 public class HomeServiceImpl implements HomeService {
     @Override
-    public ResponseEntity<GeneralResponseDTO> getHome(Principal principal) {
+    public ResponseEntity<?> getHome(Principal principal) {
 
         GeneralResponseDTO data = new GeneralResponseDTO();
                 data.setCode(200);
-                data.setStatusCode("OK");
+                data.setCodeStatus("OK");
 
         HomeDTO home = new HomeDTO();
         home.setName(principal.getName());
         home.setWelcomeMessage("Hello " + principal.getName() + "!");
 
-        return ResponseEntity.ok(data);
+        ArrayList<HomeDTO> homeList = new ArrayList<>();
+        homeList.add(home);
+
+        HashMap<String, Object> response = new HashMap<>();
+        response.put("code", data.getCode());
+        response.put("code_status", data.getCodeStatus());
+        response.put("data", homeList);
+
+        TreeMap<String, Object> sorted = new TreeMap<>();
+        sorted.put("code", response.get("code"));
+        sorted.put("code_status", response.get("code_status"));
+        sorted.put("data", response.get("data"));
+
+        return ResponseEntity.ok(sorted);
     }
 }
