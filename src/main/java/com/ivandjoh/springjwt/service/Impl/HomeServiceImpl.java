@@ -1,5 +1,6 @@
 package com.ivandjoh.springjwt.service.Impl;
 
+import com.ivandjoh.springjwt.dtos.GeneralResponseDTO;
 import com.ivandjoh.springjwt.dtos.HomeDTO;
 import com.ivandjoh.springjwt.service.HomeService;
 import org.springframework.http.ResponseEntity;
@@ -10,10 +11,16 @@ import java.security.Principal;
 @Service
 public class HomeServiceImpl implements HomeService {
     @Override
-    public ResponseEntity<HomeDTO> getHome(Principal principal) {
+    public ResponseEntity<GeneralResponseDTO> getHome(Principal principal) {
 
-        return principal != null
-                ? ResponseEntity.ok(new HomeDTO("Hello " + principal.getName()))
-                : ResponseEntity.ok(new HomeDTO("Hello World"));
+        GeneralResponseDTO data = new GeneralResponseDTO();
+                data.setCode(200);
+                data.setStatusCode("OK");
+
+        HomeDTO home = new HomeDTO();
+        home.setName(principal.getName());
+        home.setWelcomeMessage("Hello " + principal.getName() + "!");
+
+        return ResponseEntity.ok(data);
     }
 }
